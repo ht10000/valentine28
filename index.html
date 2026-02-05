@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Playfair Display', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #ff5f9e, #ff8fcf);
+}
+
+/* Floating hearts (3D illusion) */
+.heart {
+  position: absolute;
+  font-size: 26px;
+  animation: float 8s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh) scale(0.6); }
+  to { transform: translateY(-10vh) scale(1.2); }
+}
+
+.card {
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(15px);
+  padding: 50px 60px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+
+h1 {
+  font-size: 2.6rem;
+  color: #6a0030;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #5a0026;
+}
+
+.beat {
+  font-size: 60px;
+  animation: beat 1s infinite;
+}
+
+@keyframes beat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+}
+
+.buttons {
+  margin-top: 25px;
+  position: relative;
+  height: 70px;
+}
+
+button {
+  padding: 14px 34px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+}
+
+.yes {
+  background: #c2185b;
+  color: white;
+  left: 35%;
+}
+
+.no {
+  background: #eee;
+  color: #777;
+  left: 55%;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>Hey, <em>ARYMAN</em> ❤️</h1>
+  <p>Some people just make the world feel softer and brighter with their presence and you are that one for me who makes ordinary moments feel special :)</p>
+  <div class="beat">💖</div>
+  <p><strong>Will you be my Valentine Babyyy ( try saying no :/)?</strong></p>
+
+  <div class="buttons">
+    <button class="yes" onclick="playAndGo()">Yes 🌹</button>
+    <button class="no" id="noBtn">No</button>
+  </div>
+</div>
+
+<script>
+/* Floating hearts */
+for(let i=0;i<25;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💗";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=6+Math.random()*6+"s";
+  document.body.appendChild(h);
+}
+
+/* Runaway NO */
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", move);
+noBtn.addEventListener("touchstart", move);
+function move(){
+  noBtn.style.left=Math.random()*80+"%";
+  noBtn.style.top=Math.random()*50+"%";
+}
+
+/* Music + page change */
+function playAndGo(){
+  const m=document.getElementById("music");
+  m.play();
+  setTimeout(()=>{ window.location.href="yes.html"; }, 600);
+}
+</script>
+
+</body>
+</html>
